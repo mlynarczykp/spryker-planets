@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\Planet\Business;
 
+use Generated\Shared\Transfer\PlanetCollectionTransfer;
 use Generated\Shared\Transfer\PlanetTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
@@ -41,5 +42,18 @@ class PlanetFacade extends AbstractFacade implements PlanetFacadeInterface
             ->createPlanetReader()
             ->findPlanetById($idPlanet);
     }
-}
 
+    /**
+     * {@inheritDoc}
+     *
+     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer
+     * @api
+     *
+     */
+    public function getPlanetsEntities(): PlanetCollectionTransfer
+    {
+        return $this->getFactory()
+            ->createPlanetReader()
+            ->getAllPlanets();
+    }
+}

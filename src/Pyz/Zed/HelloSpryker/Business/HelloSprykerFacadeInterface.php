@@ -41,4 +41,4 @@ interface HelloSprykerFacadeInterface
      *
      */
     public function findHelloSpryker(HelloSprykerTransfer $helloSprykerTransfer): HelloSprykerTransfer;
-}
+        }

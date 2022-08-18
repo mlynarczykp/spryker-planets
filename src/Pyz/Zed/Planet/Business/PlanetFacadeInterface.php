@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\Planet\Business;
 
+use Generated\Shared\Transfer\PlanetCollectionTransfer;
 use Generated\Shared\Transfer\PlanetTransfer;
 
 interface PlanetFacadeInterface
@@ -30,4 +31,14 @@ interface PlanetFacadeInterface
      */
     public function findPlanetById(int $idPlanet): ?PlanetTransfer;
 
+    /**
+     * Specification:
+     * - returns all Planets
+     * - returns null if no such record is found
+     *
+     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer
+     * @api
+     *
+     */
+    public function getPlanetsEntities(): PlanetCollectionTransfer;
 }
