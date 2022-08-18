@@ -41,4 +41,16 @@ interface PlanetFacadeInterface
      *
      */
     public function getPlanetsEntities(): PlanetCollectionTransfer;
+
+    /**
+     * Specification:
+     * - delete Planet with specific ID
+     *
+     * @param \Generated\Shared\Transfer\PlanetTransfer $planetTransfer
+     *
+     * @return void
+     * @api
+     *
+     */
+    public function deletePlanet(PlanetTransfer $planetTransfer): void;
 }

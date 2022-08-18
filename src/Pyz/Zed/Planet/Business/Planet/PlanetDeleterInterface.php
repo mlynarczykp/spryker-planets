@@ -4,12 +4,12 @@ namespace Pyz\Zed\Planet\Business\Planet;
 
 use Generated\Shared\Transfer\PlanetTransfer;
 
-interface PlanetSaverInterface
+interface PlanetDeleterInterface
 {
     /**
      * @param \Generated\Shared\Transfer\PlanetTransfer $planetTransfer
      *
-     * @return \Generated\Shared\Transfer\PlanetTransfer
+     * @return void
      */
-    public function save(PlanetTransfer $planetTransfer): PlanetTransfer;
+    public function delete(PlanetTransfer $planetTransfer): void;
 }

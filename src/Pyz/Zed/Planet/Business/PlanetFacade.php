@@ -56,4 +56,18 @@ class PlanetFacade extends AbstractFacade implements PlanetFacadeInterface
             ->createPlanetReader()
             ->getAllPlanets();
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param \Generated\Shared\Transfer\PlanetTransfer $planetTransfer
+     * @return void
+     * @api
+     *
+     */
+    public function deletePlanet(PlanetTransfer $transfer): void
+    {
+        $this->getFactory()
+            ->createPlanetDeleter()->delete($transfer);
+    }
 }

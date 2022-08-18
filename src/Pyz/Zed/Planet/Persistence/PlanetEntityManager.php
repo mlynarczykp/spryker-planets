@@ -1,4 +1,5 @@
 <?php
+
 namespace Pyz\Zed\Planet\Persistence;
 
 use Generated\Shared\Transfer\PlanetTransfer;
@@ -28,6 +29,19 @@ class PlanetEntityManager extends AbstractEntityManager implements PlanetEntityM
         $planetTransfer->fromArray($planetEntity->toArray());
 
         return $planetTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\PlanetTransfer $planetTransfer
+     *
+     * @throws \Propel\Runtime\Exception\PropelException
+     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
+     */
+    public function deletePlanet(PlanetTransfer $planetTransfer): void
+    {
+        $this->createPyzPlanetQuery()
+            ->filterByIdPlanet($planetTransfer->getIdPlanet())
+            ->delete();
     }
 
     /**
