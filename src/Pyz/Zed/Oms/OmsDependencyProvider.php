@@ -27,6 +27,8 @@ use Spryker\Zed\SalesInvoice\Communication\Plugin\Oms\GenerateOrderInvoiceComman
 use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Command\Demo\PayCommand;
+use Pyz\Zed\Oms\Communication\Plugin\Condition\Demo\IsAuthorizedCondition;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
@@ -90,9 +92,16 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new CreateGiftCardCommandPlugin(), 'GiftCard/CreateGiftCard');
             $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
             $commandCollection->add(new GenerateOrderInvoiceCommandPlugin(), 'Invoice/Generate');
-            $commandCollection->add(new SendEventPaymentConfirmationPendingPlugin(), 'Payment/SendEventPaymentConfirmationPending');
+            $commandCollection->add(
+                new SendEventPaymentConfirmationPendingPlugin(),
+                'Payment/SendEventPaymentConfirmationPending'
+            );
             $commandCollection->add(new SendEventPaymentRefundPendingPlugin(), 'Payment/SendEventPaymentRefundPending');
-            $commandCollection->add(new SendEventPaymentCancelReservationPendingPlugin(), 'Payment/SendEventPaymentCancelReservationPending');
+            $commandCollection->add(
+                new SendEventPaymentCancelReservationPendingPlugin(),
+                'Payment/SendEventPaymentCancelReservationPending'
+            );
+            $commandCollection->add(new PayCommand(), 'Demo/Pay');
 
             return $commandCollection;
         });
@@ -109,8 +118,8 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     {
         $container->extend(self::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
             $conditionCollection
-            ->add(new IsGiftCardConditionPlugin(), 'GiftCard/IsGiftCard');
-
+                ->add(new IsGiftCardConditionPlugin(), 'GiftCard/IsGiftCard');
+            $conditionCollection->add(new IsAuthorizedCondition(), 'Demo/IsAuthorized');
             return $conditionCollection;
         });
 
