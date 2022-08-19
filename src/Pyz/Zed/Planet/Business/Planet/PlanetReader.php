@@ -30,10 +30,12 @@ class PlanetReader implements PlanetReaderInterface
     }
 
     /**
-     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer|null
+     * @param \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
+     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
      */
-    public function getAllPlanets(): PlanetCollectionTransfer
+    public function getPlanetCollection(PlanetCollectionTransfer $planetsRestApiTransfer): PlanetCollectionTransfer
     {
-        return $this->planetRepository->findAllPlanets();
+        return $this->planetRepository->getPlanetCollection($planetsRestApiTransfer);
     }
+
 }

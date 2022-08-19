@@ -32,15 +32,10 @@ interface PlanetFacadeInterface
     public function findPlanetById(int $idPlanet): ?PlanetTransfer;
 
     /**
-     * Specification:
-     * - returns all Planets
-     * - returns null if no such record is found
-     *
-     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer
-     * @api
-     *
+     * @param \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
+     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
      */
-    public function getPlanetsEntities(): PlanetCollectionTransfer;
+    public function getPlanetCollection(PlanetCollectionTransfer $planetsRestApiTransfer): PlanetCollectionTransfer;
 
     /**
      * Specification:

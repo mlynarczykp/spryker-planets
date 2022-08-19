@@ -15,7 +15,8 @@ interface PlanetRepositoryInterface
     public function findPlanetById(int $idPlanet): ?PlanetTransfer;
 
     /**
-     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer|null
+     * @param \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
+     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
      */
-    public function findAllPlanets(): PlanetCollectionTransfer;
+    public function getPlanetCollection(PlanetCollectionTransfer $planetsRestApiTransfer): PlanetCollectionTransfer;
 }

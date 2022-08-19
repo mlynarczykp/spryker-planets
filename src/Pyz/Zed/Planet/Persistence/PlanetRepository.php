@@ -28,19 +28,20 @@ class PlanetRepository extends AbstractRepository implements PlanetRepositoryInt
     }
 
     /**
-     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer|null
+     * @param \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
+     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
      */
-    public function findAllPlanets(): PlanetCollectionTransfer
+    public function getPlanetCollection(PlanetCollectionTransfer $planetsRestApiTransfer): PlanetCollectionTransfer
     {
-        $planets = $this->createPyzPlanetQuery()
+        $planetCollection = $this->createPyzPlanetQuery()
             ->find();
-        $transfer = new PlanetCollectionTransfer();
-        foreach ($planets as $planet) {
-            $temp = new PlanetTransfer();
-            $temp->fromArray($planet->toArray());
-            $transfer->addPlanet($temp);
+
+        foreach ($planetCollection as $planetEntity) {
+            $planetTransfer = (new PlanetTransfer())->fromArray($planetEntity->toArray());
+            $planetsRestApiTransfer->addPlanet($planetTransfer);
         }
-        return $transfer;
+
+        return $planetsRestApiTransfer;
     }
 
     /**

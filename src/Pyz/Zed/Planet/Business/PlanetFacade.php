@@ -44,18 +44,16 @@ class PlanetFacade extends AbstractFacade implements PlanetFacadeInterface
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer
-     * @api
-     *
+     * @param \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
+     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
      */
-    public function getPlanetsEntities(): PlanetCollectionTransfer
+    public function getPlanetCollection(PlanetCollectionTransfer $planetsRestApiTransfer): PlanetCollectionTransfer
     {
         return $this->getFactory()
             ->createPlanetReader()
-            ->getAllPlanets();
+            ->getPlanetCollection($planetsRestApiTransfer);
     }
+
 
     /**
      * {@inheritDoc}
