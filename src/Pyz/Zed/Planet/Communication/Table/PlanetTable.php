@@ -6,15 +6,13 @@ use Spryker\Zed\Gui\Communication\Table\AbstractTable;
 use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
 use Orm\Zed\Planet\Persistence\PyzPlanetQuery;
 use Orm\Zed\Planet\Persistence\Map\PyzPlanetTableMap;
-use Spryker\Service\UtilText\Model\Url\Url;
 
 class PlanetTable extends AbstractTable
 {
-    const ACTION = 'Action';
-
     /** @var \Orm\Zed\Planet\Persistence\PyzPlanetQuery */
 
     private PyzPlanetQuery $planetQuery;
+    const COL_ACTION = 'Actions';
 
     /**
      * @param \Orm\Zed\Planet\Persistence\PyzPlanetQuery $planetQuery
@@ -36,7 +34,7 @@ class PlanetTable extends AbstractTable
             PyzPlanetTableMap::COL_NAME => 'Planet name',
             PyzPlanetTableMap::COL_INTERESTING_FACT => 'Interesting fact',
             PyzPlanetTableMap::COL_NUMBER_OF_MOONS => 'Number of moons',
-            static::ACTION => static::ACTION
+            self::COL_ACTION => 'Actions'
         ]);
 
         $config->setSortable(
@@ -50,42 +48,31 @@ class PlanetTable extends AbstractTable
 
         $config->setSearchable([PyzPlanetTableMap::COL_NAME]);
 
-        $config->addRawColumn(static::ACTION);
+        $config->addRawColumn(self::COL_ACTION);
 
         return $config;
     }
 
-    protected function createEditButton(string $planetId): string
+    /**
+     * @param $planetDataItem
+     *
+     * @return string
+     */
+    protected function generateItemButtons($planetDataItem): string
     {
-        $editPlanetUrl = Url::generate(
-            '/planet/edit',
-            [
-                'id-planet' => $planetId,
-            ],
+        $btnGroup = [];
+        $btnGroup[] = $this->createButtonGroupItem(
+            "Edit",
+            "/planet/edit?id-planet={$planetDataItem[PyzPlanetTableMap::COL_ID_PLANET]}"
         );
-
-        return $this->generateEditButton($editPlanetUrl, 'Edit');
-    }
-
-    protected function createDeleteButton(string $planetId): string
-    {
-        $deletePlanetUrl = Url::generate(
-            '/planet/delete',
-            [
-                'id-planet' => $planetId,
-            ],
+        $btnGroup[] = $this->createButtonGroupItem(
+            "Delete",
+            "/planet/delete?id-planet={$planetDataItem[PyzPlanetTableMap::COL_ID_PLANET]}"
         );
-
-        return $this->generateRemoveButton($deletePlanetUrl, 'Delete');
-    }
-
-    protected function getActionButtons(string $planetId): string
-    {
-        $buttons = [];
-        $buttons[] = $this->createEditButton($planetId);
-        $buttons[] = $this->createDeleteButton($planetId);
-
-        return implode(' ', $buttons);
+        return $this->generateButtonGroup(
+            $btnGroup,
+            'Actions'
+        );
     }
 
     /**
@@ -109,7 +96,7 @@ class PlanetTable extends AbstractTable
                 PyzPlanetTableMap::COL_INTERESTING_FACT =>
                     $planetDataItem[PyzPlanetTableMap:: COL_INTERESTING_FACT],
                 PyzPlanetTableMap::COL_NUMBER_OF_MOONS => $planetDataItem[PyzPlanetTableMap::COL_NUMBER_OF_MOONS],
-                static::ACTION => $this->getActionButtons($planetDataItem[PyzPlanetTableMap::COL_ID_PLANET])
+                self::COL_ACTION => $this->generateItemButtons($planetDataItem)
             ];
         }
         return $planetTableRows;

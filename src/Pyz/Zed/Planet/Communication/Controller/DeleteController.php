@@ -2,7 +2,6 @@
 
 namespace Pyz\Zed\Planet\Communication\Controller;
 
-use Generated\Shared\Transfer\PlanetTransfer;
 use Pyz\Zed\Planet\Business\PlanetFacadeInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;

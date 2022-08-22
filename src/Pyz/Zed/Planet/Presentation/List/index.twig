@@ -1,5 +1,10 @@
 {% extends '@Gui/Layout/layout.twig' %}
 {% set widget_title = 'Overview of Planets' %}
+
+{% block action %}
+    {{ createActionButton('/planet/create', 'Create') }}
+{% endblock %}
+
 {% block head_title widget_title %}
 {% block section_title widget_title %}
 {% block content %}
@@ -10,3 +15,4 @@ of planets' } %}
         {% endblock %}
     {% endembed %}
 {% endblock %}
+
