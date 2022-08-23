@@ -55,6 +55,7 @@ use SprykerShop\Yves\WishlistPage\Plugin\Router\WishlistPageRouteProviderPlugin;
 use Pyz\Yves\HelloWorld\Plugin\Router\HelloWorldRouteProviderPlugin;
 use Pyz\Yves\HelloSpryker\Plugin\Router\HelloSprykerRouteProviderPlugin;
 use Pyz\Yves\PersonalizedProduct\Plugin\Router\PersonalizedProductRouteProviderPlugin;
+use Pyz\Yves\HelloPawel\Plugin\Router\HelloPawelRouteProviderPlugin;
 
 class RouterDependencyProvider extends SprykerRouterDependencyProvider
 {
@@ -116,6 +117,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new HelloWorldRouteProviderPlugin(),
             new HelloSprykerRouteProviderPlugin(),
             new PersonalizedProductRouteProviderPlugin(),
+            new HelloPawelRouteProviderPlugin(),
         ];
     }
 

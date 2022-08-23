@@ -24,8 +24,8 @@ class StringReverserFacadeTest extends Unit
     protected $tester;
 
     /**
-     * +     * @return void
-     * +     */
+     * @return void
+     */
     public function testStringIsReversedCorrectly(): void
     {
         // Arrange
