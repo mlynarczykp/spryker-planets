@@ -2,15 +2,20 @@
 
 namespace Pyz\Zed\HelloPawel\Business\Reverser;
 
+use Generated\Shared\Transfer\HelloPawelTransfer;
+
 class StringReverser
 {
     /**
-     * @param string $stringToReverse
+     * @param \Generated\Shared\Transfer\HelloPawelTransfer $helloPawelTransfer
      *
-     * @return string
+     * @return \Generated\Shared\Transfer\HelloPawelTransfer
      */
-    public function reverseString(string $stringToReverse): string
+    public function reverseString(HelloPawelTransfer $helloPawelTransfer): HelloPawelTransfer
     {
-        return strrev($stringToReverse);
+        $reversedString = strrev($helloPawelTransfer->getOriginalString());
+        $helloPawelTransfer->setReversedString($reversedString);
+
+        return $helloPawelTransfer;
     }
 }

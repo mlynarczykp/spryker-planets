@@ -2,17 +2,19 @@
 
 namespace Pyz\Zed\HelloPawel\Business;
 
+use Generated\Shared\Transfer\HelloPawelTransfer;
+
 interface HelloPawelFacadeInterface
 {
     /**
      * Specification:
      * - Reverses string.
      *
+     * @param \Generated\Shared\Transfer\HelloPawelTransfer $helloPawelTransfer
+     *
+     * @return \Generated\Shared\Transfer\HelloPawelTransfer
      * @api
      *
-     * @param string $stringToReverse
-     *
-     * @return string
      */
-    public function reverseString(string $stringToReverse): string;
+    public function reverseString(HelloPawelTransfer $helloPawelTransfer): HelloPawelTransfer;
 }

@@ -3,6 +3,7 @@
 namespace Pyz\Zed\HelloPawel\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractFacade;
+use Generated\Shared\Transfer\HellopawelTransfer;
 
 /**
  * @method \Pyz\Zed\HelloPawel\Business\HelloPawelBusinessFactory getFactory()
@@ -12,16 +13,16 @@ class HelloPawelFacade extends AbstractFacade implements HelloPawelFacadeInterfa
     /**
      * {@inheritDoc}
      *
+     * @param \Generated\Shared\Transfer\HelloPawelTransfer $helloPawelTransfer
+     *
+     * @return \Generated\Shared\Transfer\HelloPawelTransfer
      * @api
      *
-     * @param string $stringToReverse
-     *
-     * @return string
      */
-    public function reverseString(string $stringToReverse): string
+    public function reverseString(HelloPawelTransfer $helloPawelTransfer): HelloPawelTransfer
     {
         return $this->getFactory()
             ->createStringReverser()
-            ->reverseString($stringToReverse);
+            ->reverseString($helloPawelTransfer);
     }
 }
