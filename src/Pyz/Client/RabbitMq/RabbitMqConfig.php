@@ -40,6 +40,7 @@ use Spryker\Shared\TaxProductStorage\TaxProductStorageConfig;
 use Spryker\Shared\TaxStorage\TaxStorageConfig;
 use Spryker\Shared\UrlStorage\UrlStorageConfig;
 use Spryker\Shared\UrlStorage\UrlStorageConstants;
+use Pyz\Shared\PlanetSearch\PlanetSearchConstants;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -123,6 +124,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             TaxStorageConfig::TAX_SET_SYNC_STORAGE_QUEUE,
             SalesReturnSearchConfig::SYNC_SEARCH_RETURN,
             AssetStorageConfig::ASSET_SYNC_STORAGE_QUEUE,
+            PlanetSearchConstants::PLANET_SYNC_SEARCH_QUEUE,
         ];
     }
 
@@ -133,4 +135,6 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     {
         return 'error';
     }
+
+
 }

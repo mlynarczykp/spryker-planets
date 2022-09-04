@@ -46,6 +46,7 @@ use Spryker\Zed\Queue\QueueDependencyProvider as SprykerDependencyProvider;
 use Spryker\Zed\Synchronization\Communication\Plugin\Queue\SynchronizationSearchQueueMessageProcessorPlugin;
 use Spryker\Zed\Synchronization\Communication\Plugin\Queue\SynchronizationStorageQueueMessageProcessorPlugin;
 use SprykerEco\Zed\Loggly\Communication\Plugin\LogglyLoggerQueueMessageProcessorPlugin;
+use Pyz\Shared\PlanetSearch\PlanetSearchConstants;
 
 class QueueDependencyProvider extends SprykerDependencyProvider
 {
@@ -95,6 +96,7 @@ class QueueDependencyProvider extends SprykerDependencyProvider
             TaxStorageConfig::TAX_SET_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             SalesReturnSearchConfig::SYNC_SEARCH_RETURN => new SynchronizationSearchQueueMessageProcessorPlugin(),
             AssetStorageConfig::ASSET_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
+            PlanetSearchConstants::PLANET_SYNC_SEARCH_QUEUE => new SynchronizationSearchQueueMessageProcessorPlugin(),
         ];
     }
 }

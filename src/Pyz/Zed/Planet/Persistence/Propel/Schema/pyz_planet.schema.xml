@@ -12,5 +12,8 @@
         <column name="interesting_fact" type="VARCHAR"
                 size="255"/>
         <column name="number_of_moons" type="INTEGER"/>
+        <behavior name="event">
+            <parameter name="pyz_planet_all" column="*"/>
+        </behavior>
     </table>
 </database>

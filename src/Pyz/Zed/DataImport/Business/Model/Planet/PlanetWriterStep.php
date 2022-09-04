@@ -6,6 +6,7 @@ use Orm\Zed\Planet\Persistence\PyzPlanetQuery;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Pyz\Zed\Planet\Dependency\PlanetEvents;
 
 class PlanetWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
@@ -40,5 +41,7 @@ class PlanetWriterStep extends PublishAwareStep implements DataImportStepInterfa
         if ($planetEntity->isNew() || $planetEntity->isModified()) {
             $planetEntity->save();
         }
+
+        $this->addPublishEvents(PlanetEvents::ENTITY_PYZ_PLANET_CREATE, $planetEntity->getIdPlanet());
     }
 }
