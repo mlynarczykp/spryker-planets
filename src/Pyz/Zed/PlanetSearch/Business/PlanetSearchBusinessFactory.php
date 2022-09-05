@@ -11,6 +11,6 @@ class PlanetSearchBusinessFactory
      */
     public function createPlanetSearchWriter()
     {
-        return new PlanetSearchWriter();//
+        return new PlanetSearchWriter();
     }
 }

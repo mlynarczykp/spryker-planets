@@ -19,6 +19,8 @@ class PlanetWriterStep extends PublishAwareStep implements DataImportStepInterfa
      *
      * @return void
      * @throws \Spryker\Zed\DataImport\Business\Exception\EntityNotFoundException
+     * @throws \Propel\Runtime\Exception\PropelException
+     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
      *
      */
     public function execute(DataSetInterface $dataSet)

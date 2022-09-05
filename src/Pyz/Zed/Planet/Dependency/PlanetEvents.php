@@ -2,7 +2,7 @@
 
 namespace Pyz\Zed\Planet\Dependency;
 
-interface PlanetEvents
+class PlanetEvents
 {
     public const ENTITY_PYZ_PLANET_CREATE = 'Entity.pyz_planet.create';
     public const ENTITY_PYZ_PLANET_UPDATE = 'Entity.pyz_planet.update';
