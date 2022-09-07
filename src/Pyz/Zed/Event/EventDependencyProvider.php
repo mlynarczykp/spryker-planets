@@ -100,6 +100,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         /**
          * Search Events
          */
+        $eventSubscriberCollection->add(new PlanetSearchEventSubscriber());
         $eventSubscriberCollection->add(new CmsPageSearchEventSubscriber());
         $eventSubscriberCollection->add(new ProductReviewSearchEventSubscriber());
         $eventSubscriberCollection->add(new ProductSetPageSearchEventSubscriber());
@@ -113,7 +114,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ConfigurableBundleTemplateImagePageSearchEventSubscriber());
 
         $eventSubscriberCollection->add(new PublisherSubscriber());
-        $eventSubscriberCollection->add(new PlanetSearchEventSubscriber());
 
         return $eventSubscriberCollection;
     }

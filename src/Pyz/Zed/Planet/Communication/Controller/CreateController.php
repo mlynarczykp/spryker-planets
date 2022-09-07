@@ -25,7 +25,7 @@ class CreateController extends AbstractController
         if ($planetForm->isSubmitted() && $planetForm->isValid()) {
             $this->getFacade()
                 ->savePlanet($planetForm->getData());
-            $this->addSuccessMessage('Planet was edited.');
+            $this->addSuccessMessage('Planet has been added.');
             return $this->redirectResponse('/planet/list');
         }
 

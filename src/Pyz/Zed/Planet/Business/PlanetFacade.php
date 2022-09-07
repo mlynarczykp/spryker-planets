@@ -63,9 +63,9 @@ class PlanetFacade extends AbstractFacade implements PlanetFacadeInterface
      * @api
      *
      */
-    public function deletePlanet(PlanetTransfer $transfer): void
+    public function deletePlanet(PlanetTransfer $planetTransfer): void
     {
         $this->getFactory()
-            ->createPlanetDeleter()->delete($transfer);
+            ->createPlanetDeleter()->delete($planetTransfer);
     }
 }

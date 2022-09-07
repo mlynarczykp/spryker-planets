@@ -1,0 +1,14 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    planet: _view.planet
+} %}
+
+{% block content %}
+    <div>
+        <div>Id: {{ data.planet.id_planet }}</div>
+        <div> Name: {{ data.planet.name }}</div>
+        <div>Interesting fact: {{ data.planet.interesting_fact }}</div>
+        <div>Number of moons: {{ data.planet.number_of_moons }}</div>
+    </div>
+{% endblock %}

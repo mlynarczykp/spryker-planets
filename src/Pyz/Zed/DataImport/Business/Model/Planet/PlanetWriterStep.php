@@ -36,14 +36,16 @@ class PlanetWriterStep extends PublishAwareStep implements DataImportStepInterfa
 
         if ($planetEntity->isNew() || $planetEntity->isModified()) {
             $planetEntity->save();
+            $this->addPublishEvents(PlanetEvents::ENTITY_PYZ_PLANET_CREATE, $planetEntity->getIdPlanet());
         }
 
-        $planetEntity->setNumberOfMoons($dataSet[static::KEY_NUMBER_OF_MOONS]);
+//        $planetEntity->setNumberOfMoons($dataSet[static::KEY_NUMBER_OF_MOONS]);
+//
+//        if ($planetEntity->isNew() || $planetEntity->isModified()) {
+//            $planetEntity->save();
+//            $this->addPublishEvents(PlanetEvents::ENTITY_PYZ_PLANET_CREATE, $planetEntity->getIdPlanet());
+//        }
 
-        if ($planetEntity->isNew() || $planetEntity->isModified()) {
-            $planetEntity->save();
-        }
-
-        $this->addPublishEvents(PlanetEvents::ENTITY_PYZ_PLANET_CREATE, $planetEntity->getIdPlanet());
+//        $this->addPublishEvents(PlanetEvents::ENTITY_PYZ_PLANET_CREATE, $planetEntity->getIdPlanet());
     }
 }

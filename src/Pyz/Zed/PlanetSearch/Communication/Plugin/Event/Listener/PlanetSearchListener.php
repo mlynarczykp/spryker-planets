@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\PlanetSearch\Communication\Plugin\Event\Listener;
 
+use Generated\Shared\Transfer\EventEntityTransfer;
 use Pyz\Zed\Planet\Dependency\PlanetEvents;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use Spryker\Zed\Event\Dependency\Plugin\EventHandlerInterface;
